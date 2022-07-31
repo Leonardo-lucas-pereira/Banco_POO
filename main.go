@@ -19,4 +19,11 @@ func main() {
 	conta2 := ContaCorrente{"Lucas", 456, 654321, 897.45}
 
 	fmt.Println(conta2)
+
+	var conta3 *ContaCorrente // temos que passar o ponteiro no tipo *Conta...
+	conta3 = new(ContaCorrente)
+	conta3.titular = "Cris"
+
+	fmt.Println(conta3)  //End de memoria
+	fmt.Println(*conta3) // Conteudo do end
 }
