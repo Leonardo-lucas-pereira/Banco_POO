@@ -9,21 +9,28 @@ type ContaCorrente struct {
 	saldo         float64
 }
 
+// Quando criamos uma função para a struct, temos que referenciar o obj -> (c *ContaCorrente)
+// Assim a função fica disponivel para o obj instanciado
+func (c *ContaCorrente) sacar(valorDoSaque float64) string {
+	podeSacar := valorDoSaque > 0 && valorDoSaque <= c.saldo
+	if podeSacar {
+		c.saldo -= valorDoSaque
+		return "Saque realizado com sucesso."
+	} else {
+		return "Saldo insuficiente"
+	}
+}
+
 func main() {
 
-	conta := ContaCorrente{titular: "Leonardo",
-		numeroAgencia: 589, numeroConta: 123456, saldo: 20375.75}
+	conta := ContaCorrente{}
+	conta.titular = "Leonardo"
+	conta.numeroAgencia = 589
+	conta.numeroConta = 123456
+	conta.saldo = 20375.75
 
-	fmt.Println(conta)
+	fmt.Println(conta.saldo)
+	fmt.Println(conta.sacar(60000))
+	fmt.Println(conta.saldo)
 
-	conta2 := ContaCorrente{"Lucas", 456, 654321, 897.45}
-
-	fmt.Println(conta2)
-
-	var conta3 *ContaCorrente // temos que passar o ponteiro no tipo *Conta...
-	conta3 = new(ContaCorrente)
-	conta3.titular = "Cris"
-
-	fmt.Println(conta3)  //End de memoria
-	fmt.Println(*conta3) // Conteudo do end
 }
