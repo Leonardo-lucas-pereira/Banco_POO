@@ -8,10 +8,9 @@ import (
 
 func main() {
 
-	cliente1 := clientes.Titular("Leonardo", "123.456.871.97", "Engenheiro de Dados")
-	conta1 := contas.ContaCorrente(cliente1, 123, 123456, 89568.45)
-
-	fmt.Println(cliente1)
-	fmt.Println(conta1)
+	cliente := clientes.Titular{Nome: "Leonardo", CPF: "123.456.895.56", Profissao: "Engenheiro"}
+	fmt.Println(cliente)
+	conta := contas.ContaCorrente{Titular: cliente, NumeroAgencia: 123, NumeroConta: 123456, Saldo: 89567.32}
+	fmt.Println(conta)
 
 }
